@@ -6,6 +6,7 @@ Firmware STM32 untuk platform robot **Xierra (Autonomous Car)**, di-generate men
 
 ## Daftar Isi
 
+- [Update Summary](#update-summary)
 - [Informasi Board](#informasi-board)
 - [Konfigurasi Clock](#konfigurasi-clock)
 - [Peripheral yang Dikonfigurasi](#peripheral-yang-dikonfigurasi)
@@ -20,6 +21,21 @@ Firmware STM32 untuk platform robot **Xierra (Autonomous Car)**, di-generate men
 - [Peta Pin (Pin Mapping)](#peta-pin-pin-mapping)
 - [Struktur Proyek](#struktur-proyek)
 - [Build & Upload](#build--upload)
+
+---
+
+## Update Summary
+
+| Versi | Tanggal | Perubahan | Status |
+|-------|---------|-----------|--------|
+| v1.0  | 2025-XX-XX | Initial firmware release dengan dukungan motor DC PWM (TIM1, TIM4), encoder (TIM2, TIM3), servo PWM (TIM5), SPI1, dan USB CDC. | Stable |
+| v1.1  | 2026-02-22  | [Tambahkan deskripsi update di sini] | In Progress |
+
+**Keterangan Status:**
+- **Stable** – Versi yang telah teruji dan dapat digunakan untuk produksi
+- **In Progress** – Versi dalam pengembangan, belum selesai
+- **Beta** – Versi pre-release, tersedia untuk testing terbatas
+- **Deprecated** – Versi sudah tidak didukung, gunakan versi terbaru
 
 ---
 
