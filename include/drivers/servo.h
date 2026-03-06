@@ -2,7 +2,7 @@
  * @file servo.h
  * @brief Servo Motor Control - Header
  * @detail Standard RC servo untuk steering autonomous car
- *         Menggunakan TIM4 untuk PWM (1-2 ms pulse width)
+ *         Menggunakan TIM9 untuk PWM (1-2 ms pulse width)
  */
 
 #ifndef SERVO_H
@@ -12,7 +12,7 @@
 #include <stdint.h>
 
 /* ===== Configuration ===== */
-#define SERVO_PWM_TIMER      &htim4
+#define SERVO_PWM_TIMER      &htim9
 #define SERVO_PWM_CHANNEL    TIM_CHANNEL_1
 #define SERVO_PWM_FREQ       50       /* 50 Hz standard servo */
 #define SERVO_FREQ_DIV       20000    /* Timer frequency (assume 20kHz timer) */

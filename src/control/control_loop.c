@@ -70,12 +70,12 @@ typedef struct {
 static void control_autonomous_mode(void)
 {
     /* Read sensor data */
-    motor_state_t motor_right, motor_left;
+    motor_state_t motor_1, motor_2;
     servo_state_t servo;
     // ultrasonic_sample_t ultrasonic;  // TODO: implement ultrasonic sensor
     
-    motor_get_state(MOTOR_RIGHT, &motor_right);
-    motor_get_state(MOTOR_LEFT, &motor_left);
+    motor_get_state(MOTOR_1, &motor_1);
+    motor_get_state(MOTOR_2, &motor_2);
     servo_get_state(&servo);
     
     control_state.accel[0] = imu_latest.accel[0];
@@ -88,8 +88,8 @@ static void control_autonomous_mode(void)
     /* Collision avoidance */
     if (ultrasonic_is_collision_threat()) {
         control_state.collision_detected = 1;
-        motor_set_speed(MOTOR_RIGHT, 0);
-        motor_set_speed(MOTOR_LEFT, 0);
+        motor_set_speed(MOTOR_1, 0);
+        motor_set_speed(MOTOR_2, 0);
         servo_center();
         control_state.motor_speed = 0;
         control_state.servo_angle = 0;
@@ -102,8 +102,8 @@ static void control_autonomous_mode(void)
         control_state.motor_speed = 50;  /* Default: forward at 50% */
         control_state.servo_angle = 0;   /* Straight ahead */
         
-        motor_set_speed(MOTOR_RIGHT, control_state.motor_speed);
-        motor_set_speed(MOTOR_LEFT, control_state.motor_speed);
+        motor_set_speed(MOTOR_1, control_state.motor_speed);
+        motor_set_speed(MOTOR_2, control_state.motor_speed);
         servo_set_angle(control_state.servo_angle);
     }
 }
@@ -199,8 +199,8 @@ void control_manual_command(int16_t motor_speed, int16_t servo_angle)
         /* Allow -1 to mean "don't change" */
         if (motor_speed != -1) {
             control_state.motor_speed = motor_speed;
-            motor_set_speed(MOTOR_RIGHT, motor_speed);
-            motor_set_speed(MOTOR_LEFT, motor_speed);
+            motor_set_speed(MOTOR_1, motor_speed);
+            motor_set_speed(MOTOR_2, motor_speed);
         }
         
         if (servo_angle != -1) {

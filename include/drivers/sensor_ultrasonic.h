@@ -2,7 +2,7 @@
  * @file sensor_ultrasonic.h
  * @brief Ultrasonic Distance Sensor - Header
  * @detail HC-SR04 ultrasonic sensor untuk autonomous car collision avoidance
- *         Menggunakan TIM9 untuk timing measurement
+ *         Menggunakan TIM5 untuk timing measurement
  */
 
 #ifndef SENSOR_ULTRASONIC_H
@@ -13,10 +13,10 @@
 
 /* ===== Configuration ===== */
 #define ULTRASONIC_TRIG_PORT    GPIOB
-#define ULTRASONIC_TRIG_PIN     GPIO_PIN_2
+#define ULTRASONIC_TRIG_PIN     GPIO_PIN_8
 #define ULTRASONIC_ECHO_PORT    GPIOB
-#define ULTRASONIC_ECHO_PIN     GPIO_PIN_3
-#define ULTRASONIC_TIM          &htim9
+#define ULTRASONIC_ECHO_PIN     GPIO_PIN_9
+#define ULTRASONIC_TIM          &htim5
 
 /* Distance thresholds (cm) */
 #define ULTRASONIC_MAX_RANGE    400  /* 4 meters */

@@ -5,7 +5,7 @@
 
 #include "drivers/servo.h"
 
-extern TIM_HandleTypeDef htim4;
+extern TIM_HandleTypeDef htim9;
 
 /* Local state */
 static servo_state_t servo_state = {
@@ -50,7 +50,7 @@ static inline int16_t pulse_to_angle(uint16_t pulse)
 int servo_init(void)
 {
     /* Start PWM */
-    if (HAL_TIM_PWM_Start(&htim4, SERVO_PWM_CHANNEL) != HAL_OK) {
+    if (HAL_TIM_PWM_Start(&htim9, SERVO_PWM_CHANNEL) != HAL_OK) {
         return -1;
     }
     
@@ -77,7 +77,7 @@ int servo_set_pulse(uint16_t pulse_us)
     /* 1ms pulse = 20 count, 2ms pulse = 40 count */
     uint32_t compare_value = (pulse_us * SERVO_FREQ_DIV) / 1000000;
     
-    __HAL_TIM_SET_COMPARE(&htim4, SERVO_PWM_CHANNEL, compare_value);
+    __HAL_TIM_SET_COMPARE(&htim9, SERVO_PWM_CHANNEL, compare_value);
     
     servo_state.pulse_width_us = pulse_us;
     servo_state.angle = pulse_to_angle(pulse_us);

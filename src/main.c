@@ -24,6 +24,7 @@
 #include "drivers/motor_bts7960.h"
 #include "drivers/servo.h"
 #include "drivers/sensor_ultrasonic.h"
+#include "drivers/encoder.h"
 #include "control/control_loop.h"
 #include "communication.h"
 #include <stdio.h>
@@ -154,6 +155,12 @@ int main(void)
   /* Initialize communication system untuk Jetson */
   comm_init();
 
+  /* Initialize drivers */
+  motor_init();
+  servo_init();
+  ultrasonic_init();
+  encoder_init();
+
   uint32_t last_tick = HAL_GetTick();
   uint32_t control_tick = HAL_GetTick();
   /* USER CODE END 2 */
@@ -210,6 +217,7 @@ int main(void)
   {
       control_tick = HAL_GetTick();
       control_loop_update();
+      encoder_update_velocity();  /* Update encoder velocities */
   }
 
   /* Communication with Jetson (telemetry + command handling) */

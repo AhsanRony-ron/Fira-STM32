@@ -5,7 +5,7 @@
 
 #include "drivers/sensor_ultrasonic.h"
 
-extern TIM_HandleTypeDef htim9;
+extern TIM_HandleTypeDef htim5;
 
 /* Local state */
 static ultrasonic_sample_t latest_sample = {0};
